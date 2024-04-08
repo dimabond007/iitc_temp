@@ -1,0 +1,24 @@
+<script>
+    const rand_num = Math.floor(Math.random() * 100);
+    let user_num = -1;
+    let count_try = 0;
+    const startTime = new Date();
+
+    while (user_num !== rand_num) {
+        user_num = prompt("Guess the number between 0 and 99");
+        user_num = parseInt(user_num, 10);
+        count_try++;
+
+        if (user_num < rand_num) {
+            alert("Your number is lower");
+        } else if (user_num > rand_num) {
+            alert("Your number is higher");
+        }
+    }
+
+    const endTime = new Date();
+    const totalTime = (endTime - startTime) / 1000;
+
+    document.write(`Congratulations! You've guessed. Attempts: ${count_try}. Time: ${totalTime} sec.`);
+
+</script>
