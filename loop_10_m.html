@@ -1,0 +1,11 @@
+<script>
+    let num = prompt();
+    num = parseInt(num);
+
+    while (num > 0) {
+        let digit = num % 10;
+        document.write(digit);
+        document.write('<br>');
+        num = (num - digit) / 10;
+    }
+</script>

@@ -1,0 +1,21 @@
+<script>
+    let flag = true;
+    let min_num = Number.MAX_SAFE_INTEGER;
+    let max_num = Number.MIN_SAFE_INTEGER;
+    while(flag){
+        let num_user = +prompt()
+        if(num_user == 0){
+            flag=false;
+            break;
+        }
+        if (min_num>num_user)
+            min_num=num_user;
+        
+        if(max_num<num_user) 
+            max_num=num_user;
+    }
+
+    document.write('min = ' + min_num);
+    document.write('<br>');
+    document.write('max = ' + max_num);
+</script>

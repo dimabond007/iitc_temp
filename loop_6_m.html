@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     for (let i = 1; i <= 10; i++) { 
         let row = ''; 
         for (let j = 1; j <= 10; j++) { 
@@ -7,3 +7,22 @@
         console.log(row); 
     }
 </script>
+ -->
+
+ <script>
+    let min = Number.MAX_SAFE_INTEGER;
+    let max = Number.MIN_SAFE_INTEGER;
+    let i = 0;
+    while ( i < 5) {
+        let num = +prompt();
+        if (num < min) {
+            min = num;
+        }
+        if (num > max) {
+            max = num;
+        }
+        i++;
+    }
+
+    document.write(`min num = ${min}, max num = ${max}`);
+ </script>

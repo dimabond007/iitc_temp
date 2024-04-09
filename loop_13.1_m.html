@@ -1,0 +1,13 @@
+<script>
+    document.write('<style>body{text-align:center;}</style>');
+
+    let stars = +prompt();
+
+    for (let i = 1; i <= stars; i++) { 
+        let line='';
+        for(let j= 1; j<= i; j++){
+            line += '*'
+        }
+        document.write(line + '<br>')
+    }
+</script>
