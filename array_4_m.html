@@ -1,0 +1,26 @@
+<script>
+
+    function deldouble(arr){
+        let uniq=[];
+        for(let i=0; i<arr.length; i++){
+            let flag = false;
+            for(let j=0; j<arr.length; j++){
+                if(i == j) continue;
+
+                if(arr[i]==arr[j]){
+                    flag = true;
+                    break;
+                }
+            }
+            if(!flag){
+                uniq.push(arr[i]);
+            }
+        }
+        return uniq;
+    }
+    let arr = [1,6,7,6,8,1];
+
+    document.write(deldouble(arr));
+
+
+</script>

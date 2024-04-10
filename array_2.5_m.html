@@ -1,0 +1,15 @@
+<script>
+    function isHas(arr,num){
+        let flag = false;
+        for(let i=0; i<arr.length; i++){
+            if(arr[i]==num){
+                flag=true;
+            }
+        }
+        return flag;
+    }
+
+    let arrnums=[1,2,3,5,8];
+
+    document.write(isHas(arrnums,5));
+</script>

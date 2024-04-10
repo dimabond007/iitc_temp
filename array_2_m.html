@@ -1,0 +1,21 @@
+
+<script>
+    let arr = [];
+
+    for(let i=0;i<5;i++){
+        arr.push(Math.floor(Math.random()*99));
+    }
+
+    let sum=0;
+    for(let i=0;i<arr.length;i++){
+        sum += arr[i];
+    }
+
+    document.write(arr);
+    document.write('<br>');
+    document.write('<br>');
+    document.write('sum = '+sum);
+    document.write('<br>');
+    document.write('avg = '+sum/(arr.length-1));
+
+</script>

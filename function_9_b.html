@@ -1,0 +1,19 @@
+<script>
+    function fibonachi(num){
+        let prevnum=0;
+        let presnum=1;
+        let nextnum=1;
+        let sum = 0
+        for(let i=1;i<=num;i++){
+            document.write(presnum+" ");
+            
+            prevnum = presnum;
+            presnum = nextnum;
+            nextnum = prevnum + presnum;
+        }
+
+        return sum;
+    }
+    fibonachi(10)
+    
+</script>
