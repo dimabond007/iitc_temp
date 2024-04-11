@@ -1,0 +1,61 @@
+<script>
+    
+    function generate_nums(count){
+        let numbers=[];
+        for(let i=0; i<count; i++){
+            let unq_num;
+            while(true){
+                unq_num=Math.floor(Math.random()*46);
+                if(!numbers.includes(unq_num)){
+                    break;
+                }
+            }
+            numbers.push(unq_num)
+        }
+        return numbers;
+    }
+
+
+    function get_nums_from_user(count){
+        let user_nums=[];
+        for(let i=1; i<=count; i++){
+            
+            while(true){
+                let num = +prompt(`Please enter unique num from 1 to 46 ( ${i}/${count} ) `);
+
+                if(!isNaN(num) && num>0 && num<=46 && !user_nums.includes(num)){
+                    user_nums.push(num);
+                    break;
+                }
+            }
+        }
+        return user_nums;
+    }
+
+    function count_of_matches(arr1,arr2){
+        let matches = 0;
+        for(let i=0; i<arr1.length; i++){
+            for(let j=0; j<arr2.length; j++){
+                if(arr1[i]==arr2[j]){
+                    matches++;
+                }
+            }
+        }
+        return matches;
+    }
+
+    function show_all(arr1,arr2){
+        document.write(`Hidden numbers: ${arr1}`);
+        document.write("<br>");
+        document.write(`Yours numbers: ${arr2}`);
+    }
+
+    comp_nums = generate_nums(6);
+    user_nums = get_nums_from_user(6);
+    show_all(comp_nums,user_nums);
+    let counts = count_of_matches(comp_nums,user_nums);
+    document.write("<br>");
+    document.write(`Number of numbers guessed : ${counts}`);
+    
+
+</script>

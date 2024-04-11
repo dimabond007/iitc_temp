@@ -1,0 +1,159 @@
+<style>
+    #gameBoard {
+        display: grid;
+        grid-template-columns: repeat(3, 50px);
+        gap: 10px;
+    }
+    .cell {
+        background: #bbbbbb;
+        border-radius: 8px;
+        text-align: center;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<div class="infopanel">
+    <div id="player_turn">
+
+    </div>
+</div>
+<div id="gameBoard">
+
+</div>
+
+<script>
+    Array.prototype.count = function(value) {
+        let count = 0;
+    
+        this.forEach(item => {
+        if (item === value) {
+            count++;
+        }
+        });
+    
+        return count;
+    }
+
+    function show_gameboard(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j<arr[i].length; j++) {
+                if (arr[i][j] == undefined) {
+                    document.getElementById("gameBoard").innerHTML += `<div class="cell" data-row="${i}" data-column="${j}" onclick="check_cell(this)" data-fill=''></div>`;
+                } else {
+                    document.getElementById("gameBoard").innerHTML += `<div class="cell" data-row="${i}" data-column="${j}" onclick="check_cell(this)" data-fill='${arr[i][j]}'><span>${arr[i][j]}</span></div>`;
+                }
+            }
+        }
+    }
+
+    function check_cell(element) {
+        let el_turn = document.getElementById('player_turn');
+        
+        if (element.getAttribute("data-fill") == "") {
+            element.setAttribute("data-fill", user_turn);
+            row = element.getAttribute("data-row");
+            col = element.getAttribute("data-column");
+            if (user_turn == "X") {
+                board[row][col]= 'X';
+                element.innerHTML = "X";
+                el_turn.innerHTML = user_o + '`s turn';
+                user_turn = 'O';
+            } else {
+                board[row][col]= 'O';
+                element.innerHTML = "O";
+                user_turn = 'X';
+                el_turn.innerHTML = user_x + '`s turn';
+            }
+        } 
+        if (check_win(board) !='undefined'){
+            if(check_win(board)== 'X'){
+                document.write(`Player ${user_x} wins`);
+            }
+            else{
+                document.write(`Player ${user_o} wins`);
+            }
+        }
+    }
+
+    function check_win(board){
+        console.log();
+        for(let i = 0; i < board.length; i++){
+            for(let j = 0; j < board[i].length; j++){
+                if(board[i].count(board[i][0])==board[i].length && board[i][0].length != 0 ){
+                    return board[i][0];
+                }
+            }
+        }
+        
+        for(let i = 0; i < board.length; i++) {
+            let countel = 0
+            for(let j = 0; j < board.length; j++) {
+                let first_val_col = board[0][i];
+                if (first_val_col == board[j][i]){
+                    countel++;
+                }
+                if (countel == 3){
+                    return first_val_col;
+                }
+            }
+        }
+        let count_dia = 0;
+        for (let i = 0; i < board.length; i++) {
+            if(board[0][0] == board[i][i]){
+                count_dia++;
+            }
+        }
+        let row = 0;
+        let col = board.length-1;
+        let count_dia_offside = 0;
+        for (let i = 0; i < board.length; i++) {
+            if(board[0][board.length-1] == board[row][col]){
+                count_dia_offside++;
+            }
+            row++;
+            col--;
+        }
+        console.log(count_dia_offside);
+        
+        if(count_dia == board.length ) {
+            return board[0][0];
+        }
+
+        if(count_dia_offside == board.length) {
+            return board[0][board.length-1];
+        }
+
+       
+        /*
+       
+        for col in range(len(board[0])):
+            column = [board[row][col] for row in range(len(board))]
+            if column.count(column[0]) == len(column) and column[0] != None:
+                return column[0]
+        
+        return None 
+        */
+        return 'undefined';
+    }
+    let user_x = prompt('Please enter name of player x');
+    let user_o = prompt('Please enter name of player o');
+
+    let element_turn = document.getElementById('player_turn');
+    element_turn.innerHTML = user_x + '`s turn';
+    var user_turn = 'X'
+    
+    //let board = Array(3).fill().map(() => Array(3).fill());
+
+    let board = [
+    [ [],[],[] ],
+    [ [],[],[] ],
+    [ [],[],[] ]
+    ];
+    
+    show_gameboard(board)
+    
+
+
+</script>
