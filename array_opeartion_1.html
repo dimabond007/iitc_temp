@@ -1,0 +1,29 @@
+<script>
+    function Book(name_book, pages) {
+        this.name_book = name_book;
+        this.pages = pages;
+    }
+
+    Book.prototype.write = function(){
+        console.log(`${this.name_book}: ${this.pages} pages`);
+    }
+
+    function addBook(arr_books, name_book, pages) {
+        arr_books.push(new Book(name_book, pages));
+    }
+
+    var books = [
+        new Book("Last", 100),
+        new Book("First", 100),
+        new Book("Second", 100),
+        new Book("Third", 100),
+        new Book("Fourth", 100),
+        new Book("Fifth", 100),
+    ];
+
+    addBook(books, 'More with addBook', 200);
+
+    for (var i = 0; i < books.length; i++) {
+        books[i].write();
+    }
+</script>

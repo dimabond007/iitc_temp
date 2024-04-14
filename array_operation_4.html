@@ -1,0 +1,71 @@
+<script>
+    function Book(name_book, pages) {
+        this.name_book = name_book;
+        this.pages = pages;
+    }
+
+    Book.prototype.write = function(){
+        console.log(`${this.name_book}: ${this.pages} pages`);
+    }
+
+    function addBook(arr_books, name_book, pages) {
+        arr_books.push(new Book(name_book, pages));
+    }
+
+    function getBook(arr_books, name_book) {
+        for (var i = 0; i < arr_books.length; i++) {
+            if (arr_books[i].name_book === name_book) {
+                return arr_books[i];
+            }
+        }
+        return null;
+    }
+
+    function update_book_pages(arr_books, name_book,pages) {
+        for (var i = 0; i < arr_books.length; i++) {
+            if (arr_books[i].name_book === name_book) {
+                arr_books[i].pages = pages;
+                return arr_books[i];
+            }
+        }
+
+        return null;
+    }
+
+    function delete_book(arr_books, name_book){
+        for (var i = 0; i < arr_books.length; i++) {
+            if (arr_books[i].name_book === name_book) {
+                arr_books.splice(i, 1);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    var books = [
+        new Book("Last", 100),
+        new Book("First", 100),
+        new Book("Second", 100),
+        new Book("Third", 100),
+        new Book("Fourth", 100),
+        new Book("Fifth", 100),
+    ];
+
+    addBook(books, 'More with addBook', 200);
+    
+    //let res = getBook(books, 'Third');
+
+    //let res = update_book_pages(books,'First',300);
+
+    let res = delete_book(books, 'Third');
+
+    if (res === true) {
+        console.log('Book deleted');
+    }
+    else {
+        console.log('Book not found');
+    }
+    
+
+</script>

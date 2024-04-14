@@ -66,16 +66,28 @@
                 user_turn = 'X';
                 el_turn.innerHTML = user_x + '`s turn';
             }
+
+            if (check_win(board) !='undefined'){
+                let cels = document.getElementsByClassName("cell");
+    
+                for (let i = 0; i < cels.length; i++) {
+                    cels[i].setAttribute("data-fill", 'none');
+                }
+
+                document.getElementById('player_turn').innerHTML='';
+    
+                if(check_win(board)== 'X'){
+                    document.body.innerHTML += `Player ${user_x} wins`
+                }
+                else{
+                    document.body.innerHTML += `Player ${user_o} wins`
+                }
+            }
         } 
-        console.log(check_win(board));
-        if (check_win(board) !='undefined'){
-            if(check_win(board)== 'X'){
-                document.write(`Player ${user_x} wins`);
-            }
-            else{
-                document.write(`Player ${user_o} wins`);
-            }
-        }
+    }
+
+    function paint_win(){
+        
     }
 
     function check_win(board){
@@ -108,6 +120,11 @@
                 count_dia++;
             }
         }
+
+        if(count_dia == board.length ) {
+            return board[0][0];
+        }
+
         ///// Check Diagonals from right to left
         let count_dia_offside = 0;
         for (let i = 0; i < board.length; i++) {
@@ -116,16 +133,13 @@
             }
         }
         
-        if(count_dia == board.length ) {
-            return board[0][0];
-        }
-
         if(count_dia_offside == board.length) {
             return board[0][board.length-1];
         }
 
         return 'undefined';
     }
+
     let board_size = +prompt('Please enter size of the board');
     let user_x = prompt('Please enter name of player x');
     let user_o = prompt('Please enter name of player o');
