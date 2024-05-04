@@ -1,0 +1,74 @@
+#gameBoard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+#infoGame {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#compNums, #userNums {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+#compNums div, #userNums > div > input {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    margin: 2px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    min-width: 0;
+}
+
+#userNums > div {
+    display: flex;
+    width: 100%;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border: 1px solid #aaa;
+    text-align: center;
+}
+
+input[readonly="true"] {
+    background-color: #f0f0f0; 
+    color: #888;
+}
+
+#submit {
+    padding: 6px 33px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#submit:hover {
+    background-color: #45a049;
+}
+
+.oldInfo {
+    padding-block: 9px;
+}
